@@ -1,0 +1,2 @@
+import {user,json,fail,pi,checked,pid} from './_common.js';
+export default async function handler(req,res){if(req.method!=='POST')return json(res,405,{error:'Method not allowed'});try{const u=await user(req);const id=pid(req.body?.paymentId);const payment=await pi('/payments/'+id);checked(payment,u.uid);if(payment.status?.developer_completed)throw Object.assign(new Error('Đã hoàn tất'),{status:409});await pi('/payments/'+id+'/approve','POST');return json(res,200,{ok:true});}catch(e){fail(res,e)}}
