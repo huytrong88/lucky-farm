@@ -1,0 +1,6 @@
+import {user,redis,json,fail} from '../_shared.js';
+export {user,redis,json,fail};
+export const packs={starter:{amount:0.1,coins:100},grower:{amount:0.5,coins:600},farmer:{amount:1,coins:1400}};
+export async function pi(path,method='GET',body){const key=process.env.PI_API_KEY;if(!key)throw Object.assign(new Error('Thiếu PI_API_KEY trên Vercel'),{status:503});const r=await fetch('https://api.minepi.com/v2'+path,{method,headers:{Authorization:'Key '+key,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined,signal:AbortSignal.timeout(12000)});const data=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error('Pi API không chấp nhận giao dịch'),{status:502});return data;}
+export function checked(payment,uid){const m=payment.metadata||{},pack=packs[m.pack];if(!pack||m.game!=='luckyfarm-v4'||String(payment.user_uid||payment.uid)!==uid||Math.abs(Number(payment.amount)-pack.amount)>0.0000001||payment.direction!=='user_to_app')throw Object.assign(new Error('Giao dịch không khớp tài khoản/gói xu'),{status:400});return pack;}
+export function pid(v){if(typeof v!=='string'||!/^[-a-zA-Z0-9_]{6,120}$/.test(v))throw Object.assign(new Error('Payment ID không hợp lệ'),{status:400});return encodeURIComponent(v)}
