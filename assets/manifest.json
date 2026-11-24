@@ -1,0 +1,18 @@
+{
+  "version": "production-assets-1",
+  "licensePolicy": "Only self-created, purchased with commercial rights, or properly attributed CC0/CC-BY assets",
+  "models": [
+    {"id":"barn","file":"assets/models/barn.glb","required":true,"animations":[]},
+    {"id":"chicken_coop","file":"assets/models/chicken_coop.glb","required":true,"animations":[]},
+    {"id":"cow_barn","file":"assets/models/cow_barn.glb","required":true,"animations":[]},
+    {"id":"farmer","file":"assets/models/farmer.glb","required":true,"animations":["Idle","Walk","Water","Harvest"]},
+    {"id":"chicken","file":"assets/models/chicken.glb","required":true,"animations":["Idle","Walk","Peck"]},
+    {"id":"cow","file":"assets/models/cow.glb","required":true,"animations":["Idle","Walk","Graze"]},
+    {"id":"apple_tree","file":"assets/models/apple_tree.glb","required":true,"animations":[]},
+    {"id":"corn","file":"assets/models/corn.glb","required":true,"animations":[]},
+    {"id":"carrot","file":"assets/models/carrot.glb","required":true,"animations":[]},
+    {"id":"tomato","file":"assets/models/tomato.glb","required":true,"animations":[]},
+    {"id":"stone_bridge","file":"assets/models/stone_bridge.glb","required":true,"animations":[]},
+    {"id":"watermill","file":"assets/models/watermill.glb","required":true,"animations":["Spin"]}
+  ]
+}
